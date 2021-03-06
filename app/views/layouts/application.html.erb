@@ -16,6 +16,50 @@
   </head>
 
   <body>
+
+    <nav>
+      <ul>
+        <% if @current_seeker == nil %>
+          <li>
+            <a href="/seeker_sign_in">
+              Sign in
+            </a>
+          </li>
+
+          <li>
+            <a href="/seeker_sign_up">
+              Sign up
+            </a>
+          </li>
+        
+        <% else %>
+        
+          <li>
+            <a href="/seeker_sign_out">
+              Sign out
+            </a>
+          </li>
+
+          <li>
+            <a href="/bids">
+              My bids
+            </a>
+          </li>
+
+        <% end %>
+        
+          <li>
+            <a href="/">
+              Home
+            </a>
+          </li>
+
+      </ul>
+    </nav>
+
+    <p style=" color: green"> <%= notice %> </p>
+    <p style=" color: red"> <%= alert %> </p>
+
     <%= yield %>
   </body>
 </html>

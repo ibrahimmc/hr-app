@@ -1,0 +1,166 @@
+<div>
+  <div>
+    <h1>
+      List of all jobs
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new job
+    </h2>
+
+    <form action="/insert_job" method="post">
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <div>
+        <label for="industry_box">
+          Industry
+        </label>
+
+        <input type="text" id="industry_box" name="query_industry">
+      </div>
+
+      <div>
+        <label for="yearly_usd_salary_box">
+          Yearly usd salary
+        </label>
+
+        <input type="text" id="yearly_usd_salary_box" name="query_yearly_usd_salary">
+      </div>
+
+      <div>
+        <label for="job_description_box">
+          Job description
+        </label>
+
+        <textarea id="job_description_box" name="query_job_description" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="years_of_exp_box">
+          Years of exp
+        </label>
+
+        <input type="text" id="years_of_exp_box" name="query_years_of_exp">
+      </div>
+
+      <div>
+        <label for="company_id_box">
+          Company
+        </label>
+
+        <input type="text" id="company_id_box" name="query_company_id">
+      </div>
+
+      <button>
+        Create job
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Industry
+        </th>
+
+        <th>
+          Yearly usd salary
+        </th>
+
+        <th>
+          Job description
+        </th>
+
+        <th>
+          Years of exp
+        </th>
+
+        <th>
+          Company
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_jobs.each do |a_job| %>
+      <tr>
+        <td>
+          <%= a_job.id %>
+        </td>
+
+        <td>
+          <%= a_job.title %>
+        </td>
+
+        <td>
+          <%= a_job.industry %>
+        </td>
+
+        <td>
+          <%= a_job.yearly_usd_salary %>
+        </td>
+
+        <td>
+          <%= a_job.job_description %>
+        </td>
+
+        <td>
+          <%= a_job.years_of_exp %>
+        </td>
+
+        <td>
+          <%= a_job.company_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_job.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_job.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/jobs/<%= a_job.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,44 @@
+<div >
+  <h5>
+    Edit Company Account
+  </h5>
+
+  <div>
+    <form action="/modify_company" method="post">
+      <div>
+        <label for="email_box">Email</label>
+        <input id="email_box" name="query_email" value="<%= @current_company.email %>">
+      </div>
+      <div>
+        <label for="name_box">Name</label>
+        <input id="name_box" name="query_name" value="<%= @current_company.name %>">
+      </div>
+      <div>
+        <label for="logo_box">Logo</label>
+        <input id="logo_box" name="query_logo" value="<%= @current_company.logo %>">
+      </div>
+      <div>
+        <label for="number_of_employees_box">Number of employees</label>
+        <input id="number_of_employees_box" name="query_number_of_employees" value="<%= @current_company.number_of_employees %>">
+      </div>
+      <div>
+        <label for="hq_location_box">Hq location</label>
+        <input id="hq_location_box" name="query_hq_location" value="<%= @current_company.hq_location %>">
+      </div>
+
+      <div>
+        <label for="password_box">Password</label>
+        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+      </div>
+
+      <button>
+        Update account
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Bid #<%= @the_bid.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/bids">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_bid/<%= @the_bid.id %>">
+          Delete bid
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Job seeker
+      </dt>
+      <dd>
+        <%= @the_bid.job_seeker_id %>
+      </dd>
+
+      <dt>
+        Job
+      </dt>
+      <dd>
+        <%= @the_bid.job_id %>
+      </dd>
+
+      <dt>
+        Points bid
+      </dt>
+      <dd>
+        <%= @the_bid.points_bid %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bid.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bid.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit bid
+    </h2>
+
+    <form action="/modify_bid/<%= @the_bid.id %>"  method="post" >
+      <div>
+        <label for="job_seeker_id_box">
+          Job seeker
+        </label>
+
+        <input type="text" id="job_seeker_id_box" name="query_job_seeker_id" value="<%= @the_bid.job_seeker_id %>">
+      </div>
+
+      <div>
+        <label for="job_id_box">
+          Job
+        </label>
+
+        <input type="text" id="job_id_box" name="query_job_id" value="<%= @the_bid.job_id %>">
+      </div>
+
+      <div>
+        <label for="points_bid_box">
+          Points bid
+        </label>
+
+        <input type="text" id="points_bid_box" name="query_points_bid" value="<%= @the_bid.points_bid %>">
+      </div>
+
+      <button>
+        Update bid
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
