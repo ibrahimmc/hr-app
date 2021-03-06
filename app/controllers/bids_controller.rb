@@ -22,15 +22,16 @@ class BidsController < ApplicationController
 
     if @current_seeker.bid_points >= points_to_use
       the_bid = Bid.new
-      the_bid.job_seeker_id = @current_seeker.id
+      the_bid.seeker_id = @current_seeker.id
       the_bid.job_id = params.fetch("query_job_id")
 
       the_bid.points_bid = points_to_use
       @current_seeker.bid_points = @current_seeker.bid_points - points_to_use
-      @current_seeker.save
+      
 
       if the_bid.valid?
         the_bid.save
+        @current_seeker.save
         redirect_to("/bids", { :notice => "Bid created successfully." })
       else
         redirect_to("/bids", { :notice => "Bid failed to create successfully." })
@@ -43,19 +44,29 @@ class BidsController < ApplicationController
   end
 
   def update
+    points_to_use = params.fetch("query_bid_new").to_i
     the_id = params.fetch("path_id")
     the_bid = Bid.where({ :id => the_id }).at(0)
 
-    the_bid.job_seeker_id = params.fetch("query_job_seeker_id")
-    the_bid.job_id = params.fetch("query_job_id")
-    the_bid.points_bid = params.fetch("query_points_bid")
+    if @current_seeker.bid_points >= (points_to_use - the_bid.points_bid)
+      #the_bid.seeker_id = @current_seeker.id
+      #the_bid.job_id = params.fetch("query_job_id")  
+      @current_seeker.bid_points = @current_seeker.bid_points - (points_to_use - the_bid.points_bid)
+      the_bid.points_bid = points_to_use
 
-    if the_bid.valid?
-      the_bid.save
-      redirect_to("/bids/#{the_bid.id}", { :notice => "Bid updated successfully."} )
+      if the_bid.valid?
+        the_bid.save
+        @current_seeker.save
+        redirect_to("/bids/#{the_bid.id}", { :notice => "Bid updated successfully."} )
+      else
+        redirect_to("/bids/#{the_bid.id}", { :alert => "Bid failed to update successfully." })
+      end
+    
     else
-      redirect_to("/bids/#{the_bid.id}", { :alert => "Bid failed to update successfully." })
+      redirect_to("/bids", { :notice => "Bid failed to create successfully due to insufficient amount of points. You only have " + @current_seeker.bid_points.to_s + " points and thus cannot set a " + points_to_use.to_s + " bid" })
     end
+
+
   end
 
   def destroy

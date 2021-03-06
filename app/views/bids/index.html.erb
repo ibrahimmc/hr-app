@@ -40,7 +40,7 @@
       <tr>
 
         <td>
-          name
+          <%= a_bid.seeker.first_name + " " + a_bid.seeker.last_name %>
         </td>
 
         <td>
@@ -59,8 +59,8 @@
         </td>
 
         <td>
-          <a href="/bids/<%= a_bid.id %>">
-            Show details
+          <a href="/jobs/<%= a_bid.job.id %>">
+            Show job details
           </a>
         </td>
       </tr>

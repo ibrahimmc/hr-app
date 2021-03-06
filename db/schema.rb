@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_090101) do
+ActiveRecord::Schema.define(version: 2021_03_06_201249) do
 
   create_table "bids", force: :cascade do |t|
-    t.integer "job_seeker_id"
+    t.integer "seeker_id"
     t.integer "job_id"
     t.integer "points_bid"
     t.datetime "created_at", precision: 6, null: false
