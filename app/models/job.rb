@@ -13,4 +13,5 @@
 #  company_id        :integer
 #
 class Job < ApplicationRecord
+  belongs_to :company
 end

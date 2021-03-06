@@ -8,76 +8,67 @@
 
 <hr>
 
-<div>
+<% if @current_company != nil %>
   <div>
-    <h2>
-      Add a new job
-    </h2>
+    <div>
+      <h2>
+        Add a new job
+      </h2>
 
-    <form action="/insert_job" method="post">
-      <div>
-        <label for="title_box">
-          Title
-        </label>
+      <form action="/insert_job" method="post">
+        <div>
+          <label for="title_box">
+            Title
+          </label>
 
-        <input type="text" id="title_box" name="query_title">
-      </div>
+          <input type="text" id="title_box" name="query_title">
+        </div>
 
-      <div>
-        <label for="industry_box">
-          Industry
-        </label>
+        <div>
+          <label for="industry_box">
+            Industry
+          </label>
 
-        <input type="text" id="industry_box" name="query_industry">
-      </div>
+          <input type="text" id="industry_box" name="query_industry">
+        </div>
 
-      <div>
-        <label for="yearly_usd_salary_box">
-          Yearly usd salary
-        </label>
+        <div>
+          <label for="yearly_usd_salary_box">
+            Yearly usd salary
+          </label>
 
-        <input type="text" id="yearly_usd_salary_box" name="query_yearly_usd_salary">
-      </div>
+          <input type="text" id="yearly_usd_salary_box" name="query_yearly_usd_salary">
+        </div>
 
-      <div>
-        <label for="job_description_box">
-          Job description
-        </label>
+        <div>
+          <label for="job_description_box">
+            Job description
+          </label>
 
-        <textarea id="job_description_box" name="query_job_description" rows="3"></textarea>
-      </div>
+          <textarea id="job_description_box" name="query_job_description" rows="3"></textarea>
+        </div>
 
-      <div>
-        <label for="years_of_exp_box">
-          Years of exp
-        </label>
+        <div>
+          <label for="years_of_exp_box">
+            Years of exp
+          </label>
 
-        <input type="text" id="years_of_exp_box" name="query_years_of_exp">
-      </div>
+          <input type="text" id="years_of_exp_box" name="query_years_of_exp">
+        </div>
 
-      <div>
-        <label for="company_id_box">
-          Company
-        </label>
-
-        <input type="text" id="company_id_box" name="query_company_id">
-      </div>
-
-      <button>
-        Create job
-      </button>
-    </form>
+        <button>
+          Create job
+        </button>
+      </form>
+    </div>
   </div>
-</div>
+<% end %>
 
 <hr>
 <div>
   <div>
     <table>
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Title
@@ -117,9 +108,6 @@
 
       <% @list_of_jobs.each do |a_job| %>
       <tr>
-        <td>
-          <%= a_job.id %>
-        </td>
 
         <td>
           <%= a_job.title %>
@@ -142,7 +130,7 @@
         </td>
 
         <td>
-          <%= a_job.company_id %>
+          <%= a_job.company.name %>
         </td>
 
         <td>
