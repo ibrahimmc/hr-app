@@ -19,40 +19,84 @@
 
     <nav>
       <ul>
-        <% if @current_seeker == nil %>
-          <li>
-            <a href="/seeker_sign_in">
-              Sign in
-            </a>
-          </li>
 
-          <li>
-            <a href="/seeker_sign_up">
-              Sign up
-            </a>
-          </li>
-        
-        <% else %>
-        
-          <li>
-            <a href="/seeker_sign_out">
-              Sign out
-            </a>
-          </li>
+        <% if @current_company == nil %>
 
-          <li>
-            <a href="/bids">
-              My bids
-            </a>
-          </li>
+          <% if @current_seeker == nil %>
+            <li>
+              <a href="/seeker_sign_in">
+                Job Seeker Sign in
+              </a>
+            </li>
+
+            <li>
+              <a href="/seeker_sign_up">
+                Job Seeker Sign up
+              </a>
+            </li>
+          
+          <% else %>
+          
+            <li>
+              <a href="/seeker_sign_out">
+              Job Seeker Sign out
+              </a>
+            </li>
+
+            <li>
+              <a href="/jobs">
+                My jobs
+              </a>
+            </li>
+
+            <li>
+              <a href="/bids">
+                My bids
+              </a>
+            </li>
+
+          <% end %>
 
         <% end %>
         
-          <li>
-            <a href="/">
-              Home
-            </a>
-          </li>
+        <% if @current_seeker == nil %>
+
+          <% if @current_company == nil %>
+            <li>
+              <a href="/company_sign_in">
+                Company Sign in
+              </a>
+            </li>
+
+            <li>
+              <a href="/company_sign_up">
+                Company Sign up
+              </a>
+            </li>
+        
+          <% else %>
+
+            <li>
+              <a href="/company_sign_out">
+                Company Sign out
+              </a>
+            </li>
+
+            <li>
+              <a href="/jobs">
+                My jobs
+              </a>
+            </li>
+
+          <% end %>
+        <% end %>
+
+
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
 
       </ul>
     </nav>
