@@ -1,48 +1,8 @@
 <div>
   <div>
     <h1>
-      List of all bids
+      List of your bids
     </h1>
-  </div>
-</div>
-
-<hr>
-
-<div>
-  <div>
-    <h2>
-      Add a new bid
-    </h2>
-
-    <form action="/insert_bid" method="post">
-      <div>
-        <label for="job_seeker_id_box">
-          Job seeker
-        </label>
-
-        <input type="text" id="job_seeker_id_box" name="query_job_seeker_id">
-      </div>
-
-      <div>
-        <label for="job_id_box">
-          Job
-        </label>
-
-        <input type="text" id="job_id_box" name="query_job_id">
-      </div>
-
-      <div>
-        <label for="points_bid_box">
-          Points bid
-        </label>
-
-        <input type="text" id="points_bid_box" name="query_points_bid">
-      </div>
-
-      <button>
-        Create bid
-      </button>
-    </form>
   </div>
 </div>
 
@@ -51,9 +11,6 @@
   <div>
     <table>
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Job seeker
@@ -81,12 +38,9 @@
 
       <% @list_of_bids.each do |a_bid| %>
       <tr>
-        <td>
-          <%= a_bid.id %>
-        </td>
 
         <td>
-          <%= a_bid.job_seeker_id %>
+          <%= a_bid.seeker.first_name + " " +  a_bid.seeker.last_name %>
         </td>
 
         <td>

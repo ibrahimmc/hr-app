@@ -10,4 +10,5 @@
 #  job_seeker_id :integer
 #
 class Bid < ApplicationRecord
+  belongs_to :seeker
 end

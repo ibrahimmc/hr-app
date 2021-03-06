@@ -5,17 +5,34 @@
     </h1>
 
     <div>
+
+      <div>
+        <form action="/insert_bid" method="post">
+          <label for="bid_set_box"> </label>
+          <input id="bid_set_box" name="query_bid_set">
+          <input name="query_job_id" type="hidden" value="<%= @the_job.id %>">
+          <button>
+            Bid!
+          </button>
+        </form>
+      </div>
+
       <div>
         <a href="/jobs">
           Go back
         </a>
       </div>
 
-      <div>
-        <a href="/delete_job/<%= @the_job.id %>">
-          Delete job
-        </a>
-      </div>
+      <% if @current_company != nil %>
+        <% if @current_company.id == @the_job.company.id%>
+          <div>
+            <a href="/delete_job/<%= @the_job.id %>">
+              Delete job
+            </a>
+          </div>
+        <% end %>
+      <% end %>
+    
     </div>
 
     <dl>
@@ -58,7 +75,7 @@
         Company
       </dt>
       <dd>
-        <%= @the_job.company_id %>
+        <%= @the_job.company.name %>
       </dd>
 
       <dt>
@@ -79,68 +96,62 @@
 </div>
 
 <hr>
-
-
-<div>
-  <div>
-    <h2>
-      Edit job
-    </h2>
-
-    <form action="/modify_job/<%= @the_job.id %>"  method="post" >
+<% if @current_company != nil %>
+  <% if @current_company.id == @the_job.company.id%>
+    <div>
       <div>
-        <label for="title_box">
-          Title
-        </label>
+        <h2>
+          Edit job
+        </h2>
 
-        <input type="text" id="title_box" name="query_title" value="<%= @the_job.title %>">
+        <form action="/modify_job/<%= @the_job.id %>"  method="post" >
+          <div>
+            <label for="title_box">
+              Title
+            </label>
+
+            <input type="text" id="title_box" name="query_title" value="<%= @the_job.title %>">
+          </div>
+
+          <div>
+            <label for="industry_box">
+              Industry
+            </label>
+
+            <input type="text" id="industry_box" name="query_industry" value="<%= @the_job.industry %>">
+          </div>
+
+          <div>
+            <label for="yearly_usd_salary_box">
+              Yearly usd salary
+            </label>
+
+            <input type="text" id="yearly_usd_salary_box" name="query_yearly_usd_salary" value="<%= @the_job.yearly_usd_salary %>">
+          </div>
+
+          <div>
+            <label for="job_description_box">
+              Job description
+            </label>
+
+            <textarea id="job_description_box" name="query_job_description"><%= @the_job.job_description %></textarea>
+          </div>
+
+          <div>
+            <label for="years_of_exp_box">
+              Years of exp
+            </label>
+
+            <input type="text" id="years_of_exp_box" name="query_years_of_exp" value="<%= @the_job.years_of_exp %>">
+          </div>
+
+          <button>
+            Update job
+          </button>
+        </form>
       </div>
-
-      <div>
-        <label for="industry_box">
-          Industry
-        </label>
-
-        <input type="text" id="industry_box" name="query_industry" value="<%= @the_job.industry %>">
-      </div>
-
-      <div>
-        <label for="yearly_usd_salary_box">
-          Yearly usd salary
-        </label>
-
-        <input type="text" id="yearly_usd_salary_box" name="query_yearly_usd_salary" value="<%= @the_job.yearly_usd_salary %>">
-      </div>
-
-      <div>
-        <label for="job_description_box">
-          Job description
-        </label>
-
-        <textarea id="job_description_box" name="query_job_description"><%= @the_job.job_description %></textarea>
-      </div>
-
-      <div>
-        <label for="years_of_exp_box">
-          Years of exp
-        </label>
-
-        <input type="text" id="years_of_exp_box" name="query_years_of_exp" value="<%= @the_job.years_of_exp %>">
-      </div>
-
-      <div>
-        <label for="company_id_box">
-          Company
-        </label>
-
-        <input type="text" id="company_id_box" name="query_company_id" value="<%= @the_job.company_id %>">
-      </div>
-
-      <button>
-        Update job
-      </button>
-    </form>
-  </div>
-</div>
+    </div>
+  <% end %>
+<% end %>
 
 <hr>

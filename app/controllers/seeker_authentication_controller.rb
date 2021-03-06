@@ -45,7 +45,7 @@ class SeekerAuthenticationController < ApplicationController
     @seeker.last_name = params.fetch("query_last_name")
     @seeker.industry = params.fetch("query_industry")
     @seeker.years_of_exp = params.fetch("query_years_of_exp")
-    @seeker.bid_points = params.fetch("query_bid_points")
+    @seeker.bid_points = 2000
 
     save_status = @seeker.save
 
