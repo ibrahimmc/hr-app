@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of your bids
+      List of <%= @current_seeker.first_name.capitalize + " " + @current_seeker.last_name.capitalize %>'s bids
     </h1>
   </div>
 </div>
@@ -18,6 +18,14 @@
 
         <th>
           Points bid
+        </th>
+
+        <th>
+          Company
+        </th>
+
+        <th>
+          Logo
         </th>
 
         <th>
@@ -41,6 +49,14 @@
 
         <td>
           <%= a_bid.points_bid %>
+        </td>
+
+        <td>
+          <%= a_bid.job.company.name.capitalize %>
+        </td>
+
+        <td>
+          <img src= "<%= a_bid.job.company.logo %>" style="width:500px;height:150px;">
         </td>
 
         <td>

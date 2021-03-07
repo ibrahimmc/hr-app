@@ -93,7 +93,11 @@
         <th>
           Company
         </th>
-
+        
+        <th>
+          Logo
+        </th>
+        
         <th>
           Created at
         </th>
@@ -118,7 +122,7 @@
         </td>
 
         <td>
-          <%= a_job.yearly_usd_salary %>
+          <%= number_with_delimiter(a_job.yearly_usd_salary, :delimiter => ',') %>
         </td>
 
         <td>
@@ -130,7 +134,11 @@
         </td>
 
         <td>
-          <%= a_job.company.name %>
+          <%= a_job.company.name.capitalize %>
+        </td>
+
+        <td>
+         <img src= "<%= a_job.company.logo %>" style="width:500px;height:150px;">
         </td>
 
         <td>
