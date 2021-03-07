@@ -13,10 +13,6 @@
       <tr>
 
         <th>
-          Job seeker
-        </th>
-
-        <th>
           Job
         </th>
 
@@ -36,15 +32,11 @@
         </th>
       </tr>
 
-      <% @list_of_bids.each do |a_bid| %>
+      <% @current_seeker.bids.each do |a_bid| %>
       <tr>
 
         <td>
-          <%= a_bid.seeker.first_name + " " + a_bid.seeker.last_name %>
-        </td>
-
-        <td>
-          <%= a_bid.job_id %>
+          <%= a_bid.job.title + " " + a_bid.job.company.name  %>
         </td>
 
         <td>

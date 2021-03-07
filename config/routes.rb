@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   post("/modify_bid/:path_id", { :controller => "bids", :action => "update" })
   
   # DELETE
-  get("/delete_bid/:path_id", { :controller => "bids", :action => "destroy" })
+  get("/delete_bid", { :controller => "bids", :action => "destroy" })
 
   #------------------------------
 

@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Job #<%= @the_job.id %> details
+      Job #<%= @the_job.id %> details: <%= @the_job.title.capitalize + " at " + @the_job.company.name%>
     </h1>
 
     <div>
@@ -110,6 +110,18 @@
     </dl>
   </div>
 </div>
+
+<% if target_bid != nil %>
+  <div>
+    <form action="/delete_bid">
+      <input name="query_bid_id" type="hidden" value="<%= target_bid.id %>">
+      <button>
+        Cancel Bid!
+      </button>
+    </form>
+  </div>
+
+<% end %>
 
 <hr>
 <% if @current_company != nil %>

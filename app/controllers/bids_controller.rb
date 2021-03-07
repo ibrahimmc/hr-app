@@ -70,9 +70,10 @@ class BidsController < ApplicationController
   end
 
   def destroy
-    the_id = params.fetch("path_id")
+    the_id = params.fetch("query_bid_id")
     the_bid = Bid.where({ :id => the_id }).at(0)
-
+    @current_seeker.bid_points = @current_seeker.bid_points + the_bid.points_bid
+    @current_seeker.save
     the_bid.destroy
 
     redirect_to("/bids", { :notice => "Bid deleted successfully."} )
