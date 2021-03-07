@@ -22,6 +22,14 @@
       <% if @current_seeker != nil %>
         <p> Bid points remaining: <%= @current_seeker.bid_points %> </p>
       <% end %>
+
+      <% if @current_company != nil %>
+        <% company_jobs = 0 %>
+        <% @current_company.jobs.each do |a_job| %>
+          <% company_jobs = company_jobs + 1 %>
+        <% end %>
+        <p> Jobs posted: <%= company_jobs %> </p>
+      <% end %>
       
       <ul>
 
@@ -83,7 +91,7 @@
 
             <li>
               <a href="/company_sign_out">
-                Company Sign out
+                <%= @current_company.name %> Sign out
               </a>
             </li>
 
