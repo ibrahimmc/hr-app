@@ -18,6 +18,11 @@
   <body>
 
     <nav>
+      
+      <% if @current_seeker != nil %>
+        <p> Bid points remaining: <%= @current_seeker.bid_points %> </p>    
+      <% end %>
+      
       <ul>
 
         <% if @current_company == nil %>

@@ -23,7 +23,7 @@
         <div>
           <form action="/modify_bid/<%= target_bid.id %>" method="post">
             <label for="bid_set_box"> </label>
-            <input id="bid_set_box" name="query_bid_new">
+            <input id="bid_set_box" name="query_bid_new" value="<%= target_bid.points_bid%>">
             <input name="query_job_id" type="hidden" value="<%= @the_job.id %>">
             <button>
               Change Bid!
