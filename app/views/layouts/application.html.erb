@@ -20,7 +20,7 @@
     <nav>
       
       <% if @current_seeker != nil %>
-        <p> Bid points remaining: <%= @current_seeker.bid_points %> </p>    
+        <p> Bid points remaining: <%= @current_seeker.bid_points %> </p>
       <% end %>
       
       <ul>
@@ -44,7 +44,7 @@
           
             <li>
               <a href="/seeker_sign_out">
-              Job Seeker Sign out
+              <%= @current_seeker.first_name.capitalize + " " + @current_seeker.last_name.capitalize %> Sign out
               </a>
             </li>
 
