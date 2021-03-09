@@ -24,6 +24,7 @@ class JobsController < ApplicationController
     the_job.yearly_usd_salary = params.fetch("query_yearly_usd_salary")
     the_job.job_description = params.fetch("query_job_description")
     the_job.years_of_exp = params.fetch("query_years_of_exp")
+    the_job.seats = params.fetch("query_seats")
     the_job.company_id = @current_company.id
 
     if the_job.valid?
@@ -43,6 +44,7 @@ class JobsController < ApplicationController
     the_job.yearly_usd_salary = params.fetch("query_yearly_usd_salary")
     the_job.job_description = params.fetch("query_job_description")
     the_job.years_of_exp = params.fetch("query_years_of_exp")
+    the_job.seats = params.fetch("query_seats")
     the_job.company_id = @current_company.id
 
     if the_job.valid?
