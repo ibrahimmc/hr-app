@@ -5,6 +5,7 @@
 #  id                :integer          not null, primary key
 #  industry          :string
 #  job_description   :text
+#  seats             :integer
 #  title             :string
 #  yearly_usd_salary :integer
 #  years_of_exp      :integer
