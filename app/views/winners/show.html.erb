@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Winner #<%= @the_winner.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/winners">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_winner/<%= @the_winner.id %>">
+          Delete winner
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Seeker
+      </dt>
+      <dd>
+        <%= @the_winner.seeker_id %>
+      </dd>
+
+      <dt>
+        Job
+      </dt>
+      <dd>
+        <%= @the_winner.job_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_winner.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_winner.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit winner
+    </h2>
+
+    <form action="/modify_winner/<%= @the_winner.id %>"  method="post" >
+      <div>
+        <label for="seeker_id_box">
+          Seeker
+        </label>
+
+        <input type="text" id="seeker_id_box" name="query_seeker_id" value="<%= @the_winner.seeker_id %>">
+      </div>
+
+      <div>
+        <label for="job_id_box">
+          Job
+        </label>
+
+        <input type="text" id="job_id_box" name="query_job_id" value="<%= @the_winner.job_id %>">
+      </div>
+
+      <button>
+        Update winner
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

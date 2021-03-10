@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_195257) do
+ActiveRecord::Schema.define(version: 2021_03_10_071739) do
 
   create_table "bids", force: :cascade do |t|
     t.integer "seeker_id"
@@ -51,6 +51,13 @@ ActiveRecord::Schema.define(version: 2021_03_09_195257) do
     t.string "industry"
     t.integer "years_of_exp"
     t.integer "bid_points"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "winners", force: :cascade do |t|
+    t.integer "seeker_id"
+    t.integer "job_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
