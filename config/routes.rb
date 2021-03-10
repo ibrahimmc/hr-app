@@ -3,19 +3,19 @@ Rails.application.routes.draw do
   # Routes for the Winner resource:
 
   # CREATE
-  post("/insert_winner", { :controller => "winners", :action => "create" })
+  #post("/insert_winner", { :controller => "winners", :action => "create" })
           
   # READ
   get("/winners", { :controller => "winners", :action => "index" })
   
-  get("/winners/:path_id", { :controller => "winners", :action => "show" })
+  #get("/winners/:path_id", { :controller => "winners", :action => "show" })
   
   # UPDATE
   
-  post("/modify_winner/:path_id", { :controller => "winners", :action => "update" })
+  #post("/modify_winner/:path_id", { :controller => "winners", :action => "update" })
   
   # DELETE
-  get("/delete_winner/:path_id", { :controller => "winners", :action => "destroy" })
+  #get("/delete_winner/:path_id", { :controller => "winners", :action => "destroy" })
 
   #------------------------------
 

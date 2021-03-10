@@ -18,4 +18,5 @@ class Seeker < ApplicationRecord
   validates :email, :presence => true
   has_secure_password
   has_many :bids
+  has_many :winners
 end

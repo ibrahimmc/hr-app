@@ -1,40 +1,8 @@
 <div>
   <div>
     <h1>
-      List of all winners
+      List of all bid wins for <%= @current_seeker.first_name.capitalize + " " + @current_seeker.last_name.capitalize + "!"%>
     </h1>
-  </div>
-</div>
-
-<hr>
-
-<div>
-  <div>
-    <h2>
-      Add a new winner
-    </h2>
-
-    <form action="/insert_winner" method="post">
-      <div>
-        <label for="seeker_id_box">
-          Seeker
-        </label>
-
-        <input type="text" id="seeker_id_box" name="query_seeker_id">
-      </div>
-
-      <div>
-        <label for="job_id_box">
-          Job
-        </label>
-
-        <input type="text" id="job_id_box" name="query_job_id">
-      </div>
-
-      <button>
-        Create winner
-      </button>
-    </form>
   </div>
 </div>
 
@@ -44,55 +12,48 @@
     <table>
       <tr>
         <th>
-          ID
+          Title
         </th>
 
         <th>
-          Seeker
+          Company
         </th>
 
         <th>
-          Job
+          Industry
         </th>
 
         <th>
-          Created at
+          Description
         </th>
 
         <th>
-          Updated at
+          Salary
         </th>
 
-        <th>
-        </th>
       </tr>
 
-      <% @list_of_winners.each do |a_winner| %>
+      <% @current_seeker.winners.each do |a_winner| %>
       <tr>
         <td>
-          <%= a_winner.id %>
+          <%= a_winner.job.title %>
         </td>
 
         <td>
-          <%= a_winner.seeker_id %>
+          <%= a_winner.job.company.name %>
         </td>
 
         <td>
-          <%= a_winner.job_id %>
+          <%= a_winner.job.industry %>
         </td>
 
         <td>
-          <%= time_ago_in_words(a_winner.created_at) %> ago
+          <%= a_winner.job.job_description %>
         </td>
         <td>
-          <%= time_ago_in_words(a_winner.updated_at) %> ago
+          <%= number_with_delimiter(a_winner.job.yearly_usd_salary, :delimiter => ',') %>
         </td>
 
-        <td>
-          <a href="/winners/<%= a_winner.id %>">
-            Show details
-          </a>
-        </td>
       </tr>
       <% end %>
     </table>

@@ -13,7 +13,7 @@ task({:auction_results => :environment}) do
         the_winner.job_id = a_job.id 
         the_winner.seeker_id =  bidders_for_a_job.at(i).seeker_id
         the_winner.save
-        p bidders_for_a_job.at(i).seeker.first_name     
+        #p bidders_for_a_job.at(i).seeker.first_name     
         
         i=i+1
       end
