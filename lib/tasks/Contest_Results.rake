@@ -12,14 +12,10 @@ task({:auction_results => :environment}) do
         the_winner = Winner.new
         the_winner.job_id = a_job.id 
         the_winner.seeker_id =  bidders_for_a_job.at(i).seeker_id
-        the_winner.save
-        #p bidders_for_a_job.at(i).seeker.first_name     
-        
+        the_winner.save      
         i=i+1
       end
-    
     end
-
   end
   #cutoff_time = 24.hours.from_now + 15.minutes
 end
