@@ -106,6 +106,12 @@
           Logo
         </th>
 
+        <% if @current_seeker != nil %>
+          <th>
+            Bid?
+          </th>
+        <% end %>
+
         <th>
         </th>
       </tr>
@@ -140,6 +146,18 @@
         <td>
          <img src= "<%= a_job.company.logo %>" style="width:150px;height:150px;">
         </td>
+
+        <% if @current_seeker != nil %>
+          <% if a_job.bids.where({:seeker_id => @current_seeker.id}).count != 0   %>
+            <td>
+              Yes
+            </td>
+          <% else %>
+            <td>
+              No
+            </td>
+          <% end %>
+        <% end %>
 
         <td>
           <a href="/jobs/<%= a_job.id %>">
