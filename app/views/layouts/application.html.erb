@@ -34,6 +34,10 @@
   <div class="container">
     <%= render "shared/flashes" %>
       <nav>
+
+      <% if Winner.all.count != 0 && ( @current_seeker != nil || @current_company != nil )  %>
+        <p style="color:grey"> <i> The results are in! Check out the winners tab for more information. </i>  </p>
+      <% end %>
       
       <% if @current_seeker != nil %>
         <p> Bid points remaining: <%= @current_seeker.bid_points %> </p>
