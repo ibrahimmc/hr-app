@@ -18,6 +18,7 @@ class CompanyAuthenticationController < ApplicationController
         redirect_to("/company_sign_in", { :alert => "Incorrect password." })
       else
         session[:company_id] = company.id
+        session[:seeker_id] = -1
       
         redirect_to("/", { :notice => "Signed in successfully." })
       end
