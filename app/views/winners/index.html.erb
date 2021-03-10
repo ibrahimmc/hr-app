@@ -1,63 +1,144 @@
-<div>
+<% if @current_seeker != nil %>
   <div>
-    <h1>
-      List of all bid wins for <%= @current_seeker.first_name.capitalize + " " + @current_seeker.last_name.capitalize + "!"%>
-    </h1>
+    <div>
+      <h1>
+        List of all bid wins for <%= @current_seeker.first_name.capitalize + " " + @current_seeker.last_name.capitalize + "!"%>
+      </h1>
+    </div>
   </div>
-</div>
 
-<hr>
-<div>
+  <hr>
   <div>
-    <table>
-      <tr>
-        <th>
-          Title
-        </th>
+    <div>
+      <table>
+        <tr>
+          <th>
+            Title
+          </th>
 
-        <th>
-          Company
-        </th>
+          <th>
+            Company
+          </th>
 
-        <th>
-          Industry
-        </th>
+          <th>
+            Industry
+          </th>
 
-        <th>
-          Description
-        </th>
+          <th>
+            Description
+          </th>
 
-        <th>
-          Salary
-        </th>
+          <th>
+            Salary
+          </th>
 
-      </tr>
+        </tr>
 
-      <% @current_seeker.winners.each do |a_winner| %>
-      <tr>
-        <td>
-          <%= a_winner.job.title %>
-        </td>
+        <% @current_seeker.winners.each do |a_winner| %>
+        <tr>
+          <td>
+            <%= a_winner.job.title %>
+          </td>
 
-        <td>
-          <%= a_winner.job.company.name %>
-        </td>
+          <td>
+            <%= a_winner.job.company.name %>
+          </td>
 
-        <td>
-          <%= a_winner.job.industry %>
-        </td>
+          <td>
+            <%= a_winner.job.industry %>
+          </td>
 
-        <td>
-          <%= a_winner.job.job_description %>
-        </td>
-        <td>
-          <%= number_with_delimiter(a_winner.job.yearly_usd_salary, :delimiter => ',') %>
-        </td>
+          <td>
+            <%= a_winner.job.job_description %>
+          </td>
+          <td>
+            <%= number_with_delimiter(a_winner.job.yearly_usd_salary, :delimiter => ',') %>
+          </td>
 
-      </tr>
-      <% end %>
-    </table>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-</div>
 
-<hr>
+  <hr>
+
+<% else %>
+  <div>
+    <div>
+      <h1>
+        List of all job seeeker bid wins for <%= @current_company.name %>
+      </h1>
+    </div>
+  </div>
+
+  <hr>
+
+  <% @current_company.jobs.each do |a_job| %>
+    <div>
+      <div>
+        <h3>
+          For <%= a_job.title %>:
+        </h3>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <table>
+          <tr>
+            <th>
+              First Name
+            </th>
+
+            <th>
+              Last Name
+            </th>
+
+            <th>
+              Email
+            </th>
+
+            <th>
+              Industry
+            </th>
+
+            <th>
+              Years of Experience
+            </th>
+
+          </tr>
+
+          <% a_job.winners.each do |a_winner| %>
+          <tr>
+            <td>
+              <%= a_winner.seeker.first_name %>
+            </td>
+
+            <td>
+              <%= a_winner.seeker.last_name %>
+            </td>
+
+            <td>
+              <%= a_winner.seeker.email %>
+            </td>
+
+            <td>
+              <%= a_winner.job.industry %>
+            </td>
+
+            <td>
+              <%= a_winner.seeker.years_of_exp %>
+            </td>
+
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+    <hr>
+  <% end %>
+<% end %>
+
+
