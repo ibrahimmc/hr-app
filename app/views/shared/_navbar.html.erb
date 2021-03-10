@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <div class="container">
     <a class="navbar-brand" href="/">
-      FinalProject
+      Final Project: Bidding System for Jobs
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,12 +15,69 @@
             Resources
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="/bids" class="dropdown-item">
-              Bids
-            </a>
-            <a href="/jobs" class="dropdown-item">
-              Jobs
-            </a>
+            
+              <% if @current_company == nil %>
+
+                <% if @current_seeker == nil %>
+                
+                  <a href="/seeker_sign_in" class="dropdown-item">
+                    Job Seeker Sign in
+                  </a>
+                  
+                  <a href="/seeker_sign_up" class="dropdown-item">
+                    Job Seeker Sign up
+                  </a> 
+                
+                <% else %>
+                
+                  <a href="/seeker_sign_out" class="dropdown-item">
+                  <%= @current_seeker.first_name.capitalize + " " + @current_seeker.last_name.capitalize %> Sign out
+                  </a>
+                  
+                  <a href="/jobs" class="dropdown-item">
+                    My jobs
+                  </a>
+                
+                  <a href="/bids" class="dropdown-item">
+                    My bids
+                  </a>
+
+                <% end %>
+
+              <% end %>
+              
+              <% if @current_seeker == nil %>
+
+                <% if @current_company == nil %>
+                
+                    <a href="/company_sign_in" class="dropdown-item">
+                      Company Sign in
+                    </a>
+                
+                    <a href="/company_sign_up" class="dropdown-item">
+                      Company Sign up
+                    </a>
+                  
+              
+                <% else %>
+
+                  <a href="/company_sign_out" class="dropdown-item">
+                    <%= @current_company.name %> Sign out
+                  </a>
+                  
+                  <a href="/jobs" class="dropdown-item">
+                    My jobs
+                  </a>
+
+                <% end %>
+              <% end %>
+
+              <a href="/" class="dropdown-item">
+                Home
+              </a>
+              
+
+
           </div>
         </li>
       </ul>
