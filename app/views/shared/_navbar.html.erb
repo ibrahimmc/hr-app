@@ -72,9 +72,11 @@
                 <% end %>
               <% end %>
 
-              <a href="/winners" class="dropdown-item">
-                My wins
-              </a>
+              <% if @current_company != nil || @current_seeker != nil  %>
+                <a href="/winners" class="dropdown-item">
+                  My wins
+                </a>
+              <% end %>
 
               <a href="/" class="dropdown-item">
                 Home
