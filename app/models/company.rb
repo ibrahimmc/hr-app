@@ -15,6 +15,8 @@
 class Company < ApplicationRecord
   validates :email, :uniqueness => { :case_sensitive => false }
   validates :email, :presence => true
+  validates :name, :uniqueness => true
+  validates :name, :presence => true
   has_secure_password
   has_many :jobs
 end

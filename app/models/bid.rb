@@ -12,4 +12,7 @@
 class Bid < ApplicationRecord
   belongs_to :seeker
   belongs_to :job
+  validates :points_bid, numericality: { only_integer: true }
+  validates :points_bid, numericality: { greater_than: 0 }
+  validates :points_bid, numericality: { less_than: 2000 }
 end
